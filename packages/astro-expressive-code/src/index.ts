@@ -74,13 +74,16 @@ export function astroExpressiveCode(integrationOptions: AstroExpressiveCodeOptio
 				updateConfig({
 					vite: {
 						plugins: [
-							vitePluginAstroExpressiveCode({
-								styles: hashedStyles,
-								scripts: hashedScripts,
-								ecIntegrationOptions: integrationOptions,
-								astroConfig,
-								command,
-							}),
+							{
+								...vitePluginAstroExpressiveCode({
+									styles: hashedStyles,
+									scripts: hashedScripts,
+									ecIntegrationOptions: integrationOptions,
+									astroConfig,
+									command,
+								}),
+								apply: 'build',
+							},
 						],
 					},
 					markdown: {
